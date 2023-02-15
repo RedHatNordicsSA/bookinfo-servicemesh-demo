@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/earvonen/cool-lab-gitops.git
+    repoURL: https://github.com/RedHatNordicsSA/bookinfo-servicemesh-demo.git
     targetRevision: HEAD
     path: applications/bookinfo
   destination:
