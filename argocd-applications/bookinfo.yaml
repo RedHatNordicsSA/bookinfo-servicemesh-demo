@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bookinfo
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/earvonen/cool-lab-gitops.git
+    targetRevision: HEAD
+    path: applications/bookinfo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bookinfo
+  syncPolicy:
+    automated:
+      selfHeal: true
