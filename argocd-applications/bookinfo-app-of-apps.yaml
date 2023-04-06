@@ -11,4 +11,4 @@ spec:
     path: argocd-applications
   destination:
     server: https://kubernetes.default.svc
-    namespace: multicloud-gitops-region-one
+    namespace: openshift-gitops
