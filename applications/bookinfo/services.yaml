@@ -8,7 +8,6 @@ items:
       app: details
       service: details
     name: details
-    namespace: bookinfo
   spec:
     internalTrafficPolicy: Cluster
     ipFamilies:
@@ -30,7 +29,6 @@ items:
       app: productpage
       service: productpage
     name: productpage
-    namespace: bookinfo
   spec:
     internalTrafficPolicy: Cluster
     ipFamilies:
@@ -52,7 +50,6 @@ items:
       app: ratings
       service: ratings
     name: ratings
-    namespace: bookinfo
   spec:
     internalTrafficPolicy: Cluster
     ipFamilies:
@@ -74,7 +71,6 @@ items:
       app: reviews
       service: reviews
     name: reviews
-    namespace: bookinfo
   spec:
     internalTrafficPolicy: Cluster
     ipFamilies:

@@ -5,7 +5,6 @@ metadata:
     app: productpage
     service: productpage
   name: productpage
-  namespace: bookinfo
 spec:
   host: productpage-bookinfo.apps.rh-ocp-01.cool.lab
   port:

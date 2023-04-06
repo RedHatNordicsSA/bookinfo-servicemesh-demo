@@ -5,7 +5,6 @@ metadata:
     app: details
     version: v1
   name: details-v1
-  namespace: bookinfo
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -52,7 +51,6 @@ metadata:
     app: productpage
     version: v1
   name: productpage-v1
-  namespace: bookinfo
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -106,7 +104,6 @@ metadata:
     app: ratings
     version: v1
   name: ratings-v1
-  namespace: bookinfo
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -154,7 +151,6 @@ metadata:
     app: reviews
     version: v1
   name: reviews-v1
-  namespace: bookinfo
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -215,7 +211,6 @@ metadata:
     app: reviews
     version: v2
   name: reviews-v2
-  namespace: bookinfo
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -276,7 +271,6 @@ metadata:
     app: reviews
     version: v3
   name: reviews-v3
-  namespace: bookinfo
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
