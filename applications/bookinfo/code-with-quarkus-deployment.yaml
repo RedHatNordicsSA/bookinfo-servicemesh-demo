@@ -1,0 +1,45 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: code-with-quarkus
+  namespace: bookinfo
+  labels:
+    app: ratings
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: code-with-quarkus
+  template:
+    metadata:
+      labels:
+        app: code-with-quarkus
+        deployment: code-with-quarkus
+    spec:
+      containers:
+        - name: code-with-quarkus
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/bookinfo/code-with-quarkus@sha256:f7d1c7cff5983e38674e46219c342c05d4dcafcdb8459c4df8e7c27969599180
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
