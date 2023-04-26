@@ -1,0 +1,27 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: code-with-quarkus
+  namespace: bookinfo
+  labels:
+    app: code-with-quarkus
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'code-with-quarkus:latest'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: src/main/docker/Dockerfile.jvm.staged
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/devfile-samples/devfile-sample-code-with-quarkus.git'
+  triggers:
+    - type: ConfigChange
+  runPolicy: Serial
