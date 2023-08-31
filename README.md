@@ -73,11 +73,13 @@ And this one concerns routing to the ratings service.
 Let's say we want to test the resilience of our service a little bit. With Service Mesh, we can introduce artificial errors
 
 Uncomment / add after row 58:
+```yaml
     fault:
       abort:
         percentage:
           value: 100
         httpStatus: 500
+```
 
 This means, we will put all the calls to the ratings service to http error 500.
 
@@ -106,10 +108,12 @@ So. We could use error injection to test and measure how our architecture handle
 Now, let's go back and change something else.
 
 (Back to git -> edit -> remove "abort" and the following lines, KEEP FAULT. Add the following after fault)
+```yaml
       delay:
         percentage:
           value: 100
         fixedDelay: 2s
+```
 
 This time we're saying we want to introduce delays. We want 100 percent of the calls to get delayed by TWO seconds.
 
@@ -137,8 +141,10 @@ Finally, we can add some retries. Retries are not designed to work great with ar
 
 (go to git -> edit virtualservice -> add under ratings, BEFORE the last "- route")
 
+```yaml
     retries:
       attempts: 2
+```
 
 (remove delay and timeout)
 (commit -> argo -> refresh -> openshift gui -> project bookinfo)
@@ -181,12 +187,14 @@ We can use the circuit breaker funcitonality.
 
 (after row 31)
 
+```yaml
   trafficPolicy:
     outlierDetection:
       consecutive5xxErrors: 1
       interval: 1s
       baseEjectionTime: 1m
       maxEjectionPercent: 100
+```
 
 If a host returns one back to back 500 series error, it will be ejected from the host pool for one minute. Note that one consecutive means TWO back to back.
 
@@ -221,6 +229,7 @@ We have defined three subsets for reviews. v1 is no stars, v2 is black stars and
 We are now back in Virtual Services, which is about routing. You remember how we are already routing based on a the end-user header in ratings, right? So now, we will replicate that behavior in reviews.
 
 (after row 35)
+```yaml
   - match:
     - headers:
         end-user:
@@ -232,16 +241,21 @@ We are now back in Virtual Services, which is about routing. You remember how we
           number: 9080
     retries:
       attempts: 0
-      
+```
+
 So now we CAN route based on end-user. Let's start ACTUALLY doing it.
 
 (after row 42)
+```yaml
         subset: v3
+```
 
 Red stars for the logged-in user, yeah?
 
 (after row 50)
+```yaml
         subset: v2
+```
 
 And for everyone else, black stars.
 That should do it.
@@ -262,7 +276,9 @@ All black.
 
 (go to git -> virtualservices.yaml, scroll down to reviews)
 (under subset v3)
+```yaml
         weight: 25
+```
 (copy-paste the whole "- destination" block, change v3 to v2 and weight to 75)
 We can also do weighing between backends within each route. You can end up with very advanced setups this way.
 You can do canary releases, A/B testing, name it. You can give premium access to some subset of your users.
@@ -282,17 +298,21 @@ Here you can see that the Pod is labeled version=v2. And THAT is how service mes
 By default we get a totally random backend but we can define a load balancing strategy for the overall service as well as each subset.
 
 (Under row 55)
+```yaml
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
+```
 
 We are now doing round robin for the overall service.
 
 (Under row 58)
 PASTE UNDER ROW 58:
+```yaml
     trafficPolicy:
       loadBalancer:
         simple: LEAST_REQUEST
+```
 
 Except when we go to v1, we route to the pod with least pending requests.
 
