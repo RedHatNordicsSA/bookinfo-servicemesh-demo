@@ -6,6 +6,9 @@ subjects:
 - kind: ServiceAccount
   name: openshift-gitops-argocd-application-controller
   namespace: openshift-gitops
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: bookinfo-servicemesh
 roleRef:
   kind: ClusterRole
   name: servicemeshcontrolplanes.maistra.io-v2-admin
