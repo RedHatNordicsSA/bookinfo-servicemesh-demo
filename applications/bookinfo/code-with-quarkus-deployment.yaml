@@ -21,7 +21,7 @@ spec:
       containers:
         - name: code-with-quarkus
           image: >-
-            image-registry.openshift-image-registry.svc:5000/bookinfo/code-with-quarkus@sha256:f7d1c7cff5983e38674e46219c342c05d4dcafcdb8459c4df8e7c27969599180
+            image-registry.openshift-image-registry.svc:5000/bookinfo/code-with-quarkus:latest
           ports:
             - name: http
               containerPort: 8081
