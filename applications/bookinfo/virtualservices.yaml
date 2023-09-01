@@ -1,6 +1,8 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   name: bookinfo
 spec:
   gateways:
@@ -28,6 +30,8 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   name: reviews
 spec:
   hosts:
@@ -42,6 +46,8 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   name: ratings
 spec:
   hosts:
