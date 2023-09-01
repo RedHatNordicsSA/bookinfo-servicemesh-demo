@@ -1,6 +1,8 @@
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   name: details
 spec:
   host: details
