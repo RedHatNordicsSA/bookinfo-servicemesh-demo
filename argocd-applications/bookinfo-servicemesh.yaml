@@ -11,3 +11,6 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: bookinfo-servicemesh
+  syncPolicy:
+    automated:
+      allowEmpty: true
