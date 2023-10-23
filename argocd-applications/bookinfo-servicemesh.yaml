@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/RedHatNordicsSA/bookinfo-servicemesh-demo.git
-    targetRevision: HEAD
+    targetRevision: webinar
     path: applications/bookinfo-servicemesh
   destination:
     server: https://kubernetes.default.svc
