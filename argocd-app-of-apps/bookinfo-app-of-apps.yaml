@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/RedHatNordicsSA/bookinfo-servicemesh-demo.git
-    targetRevision: HEAD
+    targetRevision: webinar
     path: argocd-applications
   destination:
     server: https://kubernetes.default.svc
