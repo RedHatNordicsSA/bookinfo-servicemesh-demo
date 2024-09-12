@@ -63,7 +63,7 @@ spec:
         port:
           number: 9080
     retries:
-      attempts: 2
+      attempts: 0
   - route:
     - destination:
         host: ratings
