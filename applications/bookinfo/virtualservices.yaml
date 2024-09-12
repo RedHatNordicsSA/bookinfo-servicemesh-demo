@@ -37,21 +37,8 @@ spec:
   hosts:
   - 'reviews'
   http:
-  - match:
-    - headers:
-        end-user:
-          exact: Eero
-    route:
-    - destination:
-        subset: v3
-        host: reviews
-        port:
-          number: 9080
-    retries:
-      attempts: 0
   - route:
     - destination:
-        subset: v2
         host: reviews
         port:
           number: 9080
@@ -75,8 +62,6 @@ spec:
         host: ratings
         port:
           number: 9080
-    retries:
-      attempts: 0
   - route:
     - destination:
         host: ratings
