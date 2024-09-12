@@ -63,10 +63,10 @@ spec:
         port:
           number: 9080
     fault:
-      abort:
+      delay:
         percentage:
           value: 100
-        httpStatus: 500
+        fixedDelay: 2s
   - route:
     - destination:
         host: ratings
