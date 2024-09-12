@@ -30,6 +30,12 @@ kind: DestinationRule
 metadata:
   name: ratings
 spec:
+  trafficPolicy:
+    outlierDetection:
+      consecutive5xxErrors: 1
+      interval: 1s
+      baseEjectionTime: 1m
+      maxEjectionPercent: 100
   host: ratings
   subsets:
   - labels:
