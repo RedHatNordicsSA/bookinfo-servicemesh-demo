@@ -38,6 +38,7 @@ spec:
   - 'reviews'
   http:
   - route:
+    timeout: 0.5s
     - destination:
         host: reviews
         port:
