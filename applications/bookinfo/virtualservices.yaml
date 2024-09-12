@@ -38,11 +38,11 @@ spec:
   - 'reviews'
   http:
   - route:
-    timeout: 0.5s
     - destination:
         host: reviews
         port:
           number: 9080
+    timeout: 0.5s
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
