@@ -6,14 +6,14 @@ metadata:
   labels:
     app: ratings
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
-      app: code-with-quarkus
+      app: ratings
   template:
     metadata:
       labels:
-        app: code-with-quarkus
+        app: ratings
         deployment: code-with-quarkus
       annotations:
         sidecar.istio.io/inject: "true"
