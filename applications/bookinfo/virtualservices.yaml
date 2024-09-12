@@ -62,6 +62,11 @@ spec:
         host: ratings
         port:
           number: 9080
+    fault:
+      abort:
+        percentage:
+          value: 100
+        httpStatus: 500
   - route:
     - destination:
         host: ratings
