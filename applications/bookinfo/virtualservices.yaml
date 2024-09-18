@@ -42,7 +42,6 @@ spec:
         host: reviews
         port:
           number: 9080
-    timeout: 0.5s
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -63,11 +62,8 @@ spec:
         host: ratings
         port:
           number: 9080
-    fault:
-      delay:
-        percentage:
-          value: 100
-        fixedDelay: 2s
+    retries:
+      attempts: 2
   - route:
     - destination:
         host: ratings
