@@ -62,8 +62,6 @@ spec:
         host: ratings
         port:
           number: 9080
-    retries:
-      attempts: 2
   - route:
     - destination:
         host: ratings
