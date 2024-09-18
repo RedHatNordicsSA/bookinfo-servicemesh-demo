@@ -62,6 +62,7 @@ spec:
         host: ratings
         port:
           number: 9080
+    fault:
       delay:
         percentage:
           value: 100
